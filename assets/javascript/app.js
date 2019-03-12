@@ -3,7 +3,7 @@ var myQuestion = [
         question: "Who is Spider-man",
         answers: {
             a: 'Peter Parker',
-            b: 'Miles Moreallis',
+            b: 'Miles Moreales',
             c: 'Gwinn Stacey',
             d: 'All of the above are a Spider-man (in thier respective universe)'
         },
@@ -94,7 +94,7 @@ function generateQuiz(questions) {
             // adding the questions and it answer to out put
             output.push(
                 '<div class= "question">' + questions[i].question + '</div>'
-                + '<div class= "anwsers">' + answer.join(' ') + '</div>'
+                + '<div class= "answers">' + answer.join(' ') + '</div>'
             );
         }
         quizContainer.innerHTML = output.join('');
@@ -104,7 +104,8 @@ function generateQuiz(questions) {
 
     function showResults(questions) {
         // getting answers from the quizz
-        var answerContainer = quizContainer.querySelectorAll('.answers');
+        var answerContainer = document.querySelectorAll('.answers');
+        // console.log(document.querySelectorAll('.answers'))
 
         // Answer tracker
         var userAnswer = '';
@@ -113,8 +114,8 @@ function generateQuiz(questions) {
         //each question
         for (var i = 0; i < questions.length; i++) {
 
-            // find selected anwsers
-            userAnswer = (answerContainer[i].querySelector('input[name=question' + i + '] : checked') || {}).value;
+            // find selected answers
+            userAnswer = (answerContainer[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
 
             // correct answer
             if (userAnswer === questions[i].correctAnswer) {
@@ -129,7 +130,7 @@ function generateQuiz(questions) {
             }
         }
         //showing the correct answers
-        resultContainer.innerHTML = numCorrect + 'out of ' + question.length;
+        document.innerHTML = numCorrect + 'out of ' + questions.length;
 
     }
     //show the questions

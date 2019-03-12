@@ -1,0 +1,21 @@
+body{
+ text-align: center;
+ background-image: url(../images/230514.jpg);
+ background-repeat: no-repeat;
+ background-size: cover;
+ margin: auto;
+color: white
+    
+}
+#submit {
+    width: 10%;
+    color: red;
+    background: black;
+}
+h1 {
+    
+    color: red;
+}
+h3 {
+    color: darkblue
+}
