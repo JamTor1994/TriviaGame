@@ -4,8 +4,10 @@ body{
  background-repeat: no-repeat;
  background-size: cover;
  margin: auto;
-color: white
-    
+color: white;
+font-size: 20px;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+outline-color: black
 }
 #submit {
     width: 10%;
@@ -13,9 +15,13 @@ color: white
     background: black;
 }
 h1 {
-    
+    font-style: oblique;
     color: red;
 }
 h3 {
     color: darkblue
+}
+hr {
+    color: black;
+    outline: solid
 }
