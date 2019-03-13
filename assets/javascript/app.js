@@ -70,7 +70,7 @@ var myQuestion = [
 var quizContainer = document.getElementById('quiz');
 var resultContainer = document.getElementById('resul');
 var submitButton = document.getElementById('submit');
-
+var showResults;
 
 function generateQuiz(questions) {
 
@@ -102,9 +102,9 @@ function generateQuiz(questions) {
     }
 
 
-    function showResults(questions) {
+    showResults = function() {
         // getting answers from the quizz
-        var answerContainer = questions.querySelectorAll('.answers');
+        var answerContainer = document.querySelectorAll('.answers');
         // console.log(document.querySelectorAll('.answers'))
 
         // Answer tracker
@@ -112,13 +112,13 @@ function generateQuiz(questions) {
         var numCorrect = 0;
 
         //each question
-        for (var i = 0; i < questions.length; i++) {
+        for (var i = 0; i < myQuestion.length; i++) {
 
             // find selected answers
             userAnswer = (answerContainer[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
 
             // correct answer
-            if (userAnswer === questions[i].correctAnswer) {
+            if (userAnswer === myQuestion[i].correctAnswer) {
 
                 numCorrect++;
                 //color answer
@@ -130,7 +130,7 @@ function generateQuiz(questions) {
             }
         }
         //showing the correct answers
-        document.innerHTML = numCorrect + 'out of ' + questions.length;
+        document.querySelector("#results").innerHTML = numCorrect + ' out of ' + questions.length;
 
     }
     //show the questions
@@ -138,7 +138,9 @@ function generateQuiz(questions) {
 
     submitButton.onclick = function () {
 
+
         showResults(questions);
+        submitButton.disabled = true
 
     }
 }
@@ -152,7 +154,8 @@ function countdown() {
             setTimeout(tick, 1000);
         } else {
             alert("Time is up");
-            
+            showResults();
+            submitButton.disabled = true
         }
     }
     tick();
